@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="usermove">
+<head>
+    <meta charset="UTF-8">
+    <title>轨迹</title>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div class="container-fluid container" ng-controller="usermoveController">
+
+    <div class="row" style="margin-top: 50px;">
+        <form class="form-inline">
+            <div class="form-group">
+                <label>手机号</label>
+                <input type="text" class="form-control" ng-model="mdn">
+            </div>
+            <div class="form-group">
+                <label>起始时间</label>
+                <input type="text" class="form-control" ng-model="firsttime">
+            </div>
+
+            <div class="form-group">
+                <label>终止时间</label>
+                <input type="text" class="form-control" ng-model="lasttime">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="query()">登录</button>
+        </form>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <table class="table table-striped">
+            <tr>
+                <td>经度</td>
+                <td>纬度</td>
+
+            </tr>
+            <tr ng-repeat="usermove in usermoves">
+                <td ng-bind="usermove[0]"></td>
+                <td ng-bind="usermove[1]"></td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script type="application/javascript" src="vendor/jquery.min.js"></script>
+<script type="application/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="vendor/angular/angular.min.js"></script>
+<script type="application/javascript" src="vendor/angular/angular-resource.min.js"></script>
+
+<script type="application/javascript" src="script/usermove.js"></script>
+</body>
+</html>

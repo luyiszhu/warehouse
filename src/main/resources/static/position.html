@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html ng-app="position">
+<head>
+    <meta charset="UTF-8"> <!-- for HTML5 -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- /.website title -->
+    <title>NB-ONETOUCH后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- CSS Files -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="vendor/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/animate.css" rel="stylesheet" media="screen">
+    <link href="vendor/bootstrap/css/owl.theme.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/owl.carousel.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/style.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wkMmfBCpteeo6cOrD3l0dEUV2SE7ydUq"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <!-- Modernizr JS -->
+    <script src="vendor/bootstrap/js/modernizr-2.6.2.min.js"></script>
+    <!-- Colors -->
+    <link href="vendor/bootstrap/css/css-index.css" rel="stylesheet" media="screen">
+    <!-- <link href="css/css-index-green.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-purple.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-red.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-orange.css" rel="stylesheet" media="screen"> -->
+    <!-- <link href="css/css-index-yellow.css" rel="stylesheet" media="screen"> -->
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar-scroll">
+
+<!-- /.preloader -->
+<div id="preloader"></div>
+<div id="top"></div>
+
+<!-- NAVIGATION -->
+<div id="menu">
+    <nav class="navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-backyard">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand site-name" href="#top"><img src="vendor/bootstrap/images/logo2.png" alt="logo"></a>
+            </div>
+
+            <div id="navbar-scroll" class="collapse navbar-collapse navbar-backyard navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#account">我的账户</a></li>
+                    <li><a href="#network">网络优化</a></li>
+                    <li><a href="#PrecisionMarket">精准营销</a></li>
+                    <li><a href="#store">店铺选址</a></li>
+                    <li><a href="#tran">交通规划</a></li>
+                    <li><a href="#contact">联系客服</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- /.intro section -->
+
+<!--<div id="fh5co-explore" class="fh5co-bg-section">-->
+<p></p>
+<p></p>
+<p></p>
+<div class="fh5co-explore fh5co-explore1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-push-5 animate-box" >
+
+                <div style="width:880px;height:450px;border:#ccc solid 1px;" id="allmap"></div>
+
+                <!--<iframe src="baidu.html" width="892" height="450" frameborder="0" scrolling="no"></iframe>-->
+                <!--<img class="img-responsive" src="vendor/bootstrap/images/work_1.png" alt="work">-->
+            </div>
+            <div class="col-md-4 col-md-pull-8 animate-box" ng-controller="positionController">
+                <div class="mt">
+
+                    <form class="bs-example bs-example-form" role="form">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon">手机号</span>
+                            <input ng-model="imsi" type="text" class="form-control" placeholder="请输入手机号码" style="width:303px">
+                        </div>
+                    </form>
+                    <input type="hidden" value="" /><br/>
+                    <div class="form-group">
+                        <div class="input-group date form_datetime col-md-5" data-date="2018-06-08 05:25" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+                            <span class="input-group-addon">开始时间</span>
+                            <input ng-model="begin" class="form-control" size="16" type="text"  value="2018-06-08 05:25" readonly style="width:230px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                        <input type="hidden" value="" /><br/>
+                        <div class="input-group date form_datetime col-md-5" data-date="2018-06-10 05:25" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+                            <span class="input-group-addon">结束时间</span>
+                            <input ng-model="end" class="form-control" size="16" type="text"  value="2018-06-10 05:25" readonly style="width:230px">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
+                    </div>
+                    <div style="text-align: center">
+                        <button class="btn btn-default" type="button" ng-click="query()" style="margin-top:0px ">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <!--<p><a class="btn btn-primary btn-lg popup-vimeo btn-video" href="index.html"><i class="icon-play"></i>搜  索</a></p>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-md-4">{{home}}</div>-->
+                        <!--<div class="col-md-4">{{company}}</div>-->
+                        <!--<div class="col-md-4">{{worker}}</div>-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-md-4">{{area1}}</div>-->
+                        <!--<div class="col-md-4">{{area2}}</div>-->
+                        <!--<div class="col-md-4">{{area3}}</div>-->
+                    <!--</div>-->
+                    <ul >
+                        <li><i class="icon-check2">
+                        </i><a href="countTrail.html">输入手机号和时间，可查询该用户的移动轨迹，可划定该用户的工作区和居住地</a></li>
+                        <li><i class="icon-check2">
+                        </i><a href="countUser.html">输入一个时间和地点，可找出当时周边最近的5个用户</a></li>
+                        <li><i class="icon-check2">
+                        </i><a href="position.html">NB单IMSI号查询</a></li>
+                        <li><i class="icon-check2">
+                        </i><a href="full.html">NB全量查询</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--</div>-->
+
+<p></p>
+<p></p>
+<p></p>
+<!-- /.footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="col-sm-4 col-sm-offset-4">
+            <!-- /.social links -->
+            <div class="social text-center">
+                <a href="http://www.shtel.com.cn/" target="_blank">关于我们</a>
+                <span class="f12 999">|</span><a href="http://hezuo.sh.189.cn/" target="_blank">业务合作</a>
+                <span class="f12 999">|</span><a href="http://www.189.cn/sh/notice_list/" target="_blank">网厅公告</a>
+                <span class="f12 999">|</span><a href="http://agent.sh.ct10000.com/" target="_blank">代理商专区 </a>
+            </div>
+            <div class="text-center wow fadeInUp" style="font-size: 14px;">版权所有©2018 中国电信集团公司 [ 增值电信业务经营许可证 A2.B1.B2-20090001 ] ICP 证号:京 ICP 备 09031924号 <a href="http://qi60001691.cn.zhsho.com/" target="_blank">中国电信上海研究院</a></div>
+            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- /.javascript files -->
+<!-- jQuery -->
+<script src="vendor/bootstrap/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="vendor/bootstrap/js/jquery.easing.1.3.js"></script>
+<!-- Waypoints -->
+<script src="vendor/bootstrap/js/jquery.waypoints.min.js"></script>
+<!-- Stellar Parallax -->
+<script src="vendor/bootstrap/js/jquery.stellar.min.js"></script>
+<!-- Carousel -->
+<script src="vendor/bootstrap/js/owl.carousel.min.js"></script>
+<!-- countTo -->
+<script src="vendor/bootstrap/js/jquery.countTo.js"></script>
+<!-- Magnific Popup -->
+<script src="vendor/bootstrap/js/jquery.magnific-popup.min.js"></script>
+<script src="vendor/bootstrap/js/magnific-popup-options.js"></script>
+<!-- Main -->
+<script src="vendor/bootstrap/js/main.js"></script>
+<script src="vendor/bootstrap/js/jquery.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/bootstrap/js/custom.js"></script>
+<script src="vendor/bootstrap/js/jquery.sticky.js"></script>
+<script src="vendor/bootstrap/js/wow.min.js"></script>
+<script src="vendor/bootstrap/js/owl.carousel.min.js"></script>
+<script>
+		new WOW().init();
+	</script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+	map.centerAndZoom("上海", 11);  // 初始化地图,设置中心点坐标和地图级别
+	map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+	map.setCurrentCity("上海");          // 设置地图显示的城市 此项是必须设置的
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+</script>
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
+</body>
+</html>
+<script type="application/javascript" src="vendor/angular/angular.min.js"></script>
+<script type="application/javascript" src="vendor/angular/angular-resource.min.js"></script>
+<script type="application/javascript" src="vendor/js/position.js"></script>

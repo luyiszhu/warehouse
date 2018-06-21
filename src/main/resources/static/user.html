@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="user">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div class="container-fluid container" ng-controller="userController">
+
+    <div class="row" style="margin-top: 50px;">
+        <form class="form-inline">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" class="form-control" ng-model="username">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" class="form-control" ng-model="password">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="query()">登录</button>
+        </form>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <table class="table table-striped">
+            <tr>
+                <td>结果</td>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td ng-bind="user"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script type="application/javascript" src="vendor/jquery.min.js"></script>
+<script type="application/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="vendor/angular/angular.min.js"></script>
+<script type="application/javascript" src="vendor/angular/angular-resource.min.js"></script>
+
+<script type="application/javascript" src="vendor/js/user.js"></script>
+</body>
+</html>
